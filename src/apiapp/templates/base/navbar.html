@@ -1,0 +1,67 @@
+<style>
+  .navbar-brand
+{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    margin:0 auto;
+}
+.navbar {
+  min-height: 50px;
+}
+
+.sidebar {
+  height: 100%;
+  width: 100px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color:#212529;
+  overflow-x: hidden;
+  padding-top: 70px;
+}
+
+/* Style sidebar links */
+.sidebar a {
+  padding: 6px 8px 3px 3px;
+  text-decoration: none;
+  font-size: 16px;
+  color: #818181;
+  display: block;
+}
+
+/* Style links on mouse-over */
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  
+    <div class="container">
+        <a class="navbar-brand">Hello {{user}}</a>
+        <a class="navbar-nav me-auto mb-2  mb-lg-0"></a>
+    </div>
+  </nav>
+
+
+<!-- The sidebar -->
+
+  <div class="sidebar">
+    <a href="/"><i class="fa fa-fw fa-home"></i> Home</a>
+    {% if user.is_superuser %}
+      <a href='{% url "add" %}'><i class="fa fa-plus-square" ></i> Add App</a>
+      <a href='{% url "approvals" %}'><i class="fa fa-check" ></i> Approval</a>
+      <a href='{% url "logout" %}'><i class="fa fa-sign-out"></i> Logout</a>
+    {% elif user.is_active %}
+      <a href='{% url "profile" %}'><i class="fa fa-user-circle-o"></i> Profile</a>
+      <a href='{% url "points" %}'><i class="fa fa-life-ring"></i> Points</a>
+      <a href='{% url "tasks_list" %}'><i class="fa fa-tasks"></i> Task</a>
+      <a href='{% url "logout" %}'><i class="fa fa-sign-out"></i> Logout</a>
+    {% else %}
+      <a href='{% url "login" %}'><i class="fa fa-sign-in"></i> Login</a>
+    {% endif %}
+  </div>

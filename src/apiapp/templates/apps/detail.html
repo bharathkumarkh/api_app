@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">{{object.app_name}}</h3>
+                <h3 class="card-subtitle">{{object.app_category}}</h4>
+                    <h3><i class="fa fa-solid fa-star"></i> {{object.app_rating}}</h3>
+
+                    <div class="row">
+                        <div class="col-lg-5 col-md-5 col-sm-6">
+                            <div class="white-box text-left"><img src="{{object.app_image_url}}" class="rounded"
+                                    width="400" height="400"></div>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-sm-6">
+                            <h2>Points: <i class="fa fa-life-ring"></i>{{object.app_points}}</h2>
+                            <h4 class="box-title mt-5">Application Description :</h4>
+                            <p>{{object.app_description}}</p>
+                            <h3 class="box-title mt-5">Application Information</h3>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-product">
+                                    <tbody>
+                                        <tr>
+                                            <td width="390">Detail-Type</td>
+                                            <td>Data</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Application Name</td>
+                                            <td>{{object.app_name}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Application URL</td>
+                                            <td>{{object.app_url}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Application Category</td>
+                                            <td>{{object.app_category}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Application Rating</td>
+                                            <td>{{object.app_rating}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                        <div>
+                            {% if tasks_obj is None %}
+                            {% if user.is_superuser %}
+                            {% else %}
+                            <a href="tasks/" class="btn btn-primary">Upload Screenshot</a>
+                            {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

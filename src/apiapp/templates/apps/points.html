@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    #box {
+        margin-left: 5%;
+        width: 40%;
+    }
+</style>
+
+<div class="container" id="box">
+    <h3 class="box-title mt-5">Application Downloads</h3>
+    <div class="table-responsive">
+        <table class="table table-striped table-product">
+            <tbody>
+                <tr>
+                    <td width="390">Application Name</td>
+                    <td>Points</td>
+                </tr>
+                {% for x in object_list %}
+                <tr>
+                    <td>{{x.app.app_name}}</td>
+                    <td>{{x.app.app_points}}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td>Total Points Earned</td>
+                    <td>{{sum}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock content %}

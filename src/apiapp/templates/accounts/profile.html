@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+<style>
+    body {
+        background-color: #212529;
+    }
+
+    .padding {
+        padding: 3rem !important
+    }
+
+    .user-card-full {
+        overflow: auto;
+    }
+
+    .card {
+        border-radius: 30px;
+        border: solid;
+        border-color: #212529;
+    }
+
+    .m-r-0 {
+        margin-right: 0px;
+    }
+
+    .m-l-0 {
+        margin-left: 0px;
+    }
+
+
+    .bg-c-lite-green {
+        background: linear-gradient(to right, #040e1e, #2574eb);
+    }
+
+    .user-profile {
+        padding: 50px 0;
+    }
+
+    .m-b-25 {
+        margin-bottom: 20px;
+    }
+
+    h7 {
+        font-size: 30px;
+    }
+
+    h6 {
+        font-size: 16px;
+    }
+
+    .card-block {
+        padding: 1.25rem;
+    }
+
+    .b-b-default {
+        border-bottom: 1px solid #212529;
+    }
+
+    .m-b-20 {
+        margin-bottom: 20px;
+    }
+
+    .text-muted {
+        color: #565a5f !important;
+    }
+
+
+    .f-w-600 {
+        font-weight: 800;
+    }
+
+    .p-b-5 {
+        padding-bottom: 30px !important;
+    }
+</style>
+
+<div class="page-content page-container" id="page-content">
+    <div class="padding">
+        <div class="row container d-flex justify-content-center">
+            <div class="col-xl-6 col-md-12">
+                <div class="card user-card-full">
+                    <div class="row m-l-0 m-r-0">
+                        <div class="col-sm-4 bg-c-lite-green user-profile">
+                            <div class="card-block text-center text-white">
+                                <div class="m-b-25">
+                                    <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius"
+                                        alt="User-Profile-Image">
+                                </div>
+                                <h7 class="f-w-600">{{user.username}}</h7>
+                                <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+                            </div>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="card-block">
+                                <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Email</p>
+                                        <h6 class="text-muted f-w-400">{{user.email}}</h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Admin account?</p>
+                                        <h6 class="text-muted f-w-400">{{ user.is_superuser }}</h6>
+                                    </div>
+                                </div>
+                                <br>
+                                <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">More Info</h6>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Recent Login</p>
+                                        <h6 class="text-muted f-w-400">{{ user.last_login }}</h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Created</p>
+                                        <h6 class="text-muted f-w-400">{{ user.date_joined }}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

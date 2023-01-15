@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<style>
+    #box {
+        margin-left: 5%;
+    }
+</style>
+
+{% if not request.user.is_authenticated %}
+<div class="container" id="box">
+    <div class="col-6 ">
+        <div class="card" style="border:solid;border-radius: 20px;">
+            <div class="card-body">
+                <h3>Login</h3>
+                <form method='POST'>
+                    {% csrf_token %}
+                    <div class="row row-no-gutters">
+                        <div class="form-outline">
+                            {{ form.as_p }}
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary" type='submit'>Login</button>
+                    </div>
+                </form>
+                <p>Need an account? Please <a href='{% url "register" %}' class="btn btn-primary">Register</a></p>
+                {% else %}
+                <p>You're already logged in. Would you like to <a href='{% url "logout" %}'
+                        class="btn btn-primary">logout</a>?</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+{% endblock %}

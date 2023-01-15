@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load static %}
+<style>
+    #card {
+        height: 30%;
+        width: 15rem;
+    }
+</style>
+
+
+<div class="container-fluid">
+    <div class="row">
+        {% for x in object_list %}
+        <div class="col-lg-3 mb-3">
+            <ul>
+                <div class="card" id="card">
+                    <img src="{{x.app.app_image_url}}" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">{{x.app.app_name}}</h5>
+                        <h4><i class="fa fa-life-ring"></i>{{x.app.app_points}}</h4>
+                        <h5>Screenshot:</h5>
+                        <img src="{{x.image.url}}" alt="screenshot" class="card-img-top">
+                        <h6>Updated-By:</h6>
+                        <h5>{{x.user}}</h5>
+                        {{x.updated}}
+                        <a href="/tasks/{{x.id}}/" type="submit" class="btn btn">Update Status</a>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}

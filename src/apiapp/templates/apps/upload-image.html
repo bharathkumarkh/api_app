@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<style>
+    #my-dropzone {
+        width: 500px;
+        ;
+        height: 500px;
+        margin-left: 35%;
+        margin-top: 20px;
+        background-color: #212529 !important;
+        border: dashed !important;
+        border-radius: 10px !important;
+        color: #818181;
+    }
+
+    #my-dropzone:hover {
+        background-color: rgb(36, 95, 148) !important;
+    }
+
+    #button {
+        margin-top: 30px;
+        margin-left: 50%;
+    }
+</style>
+
+<script>
+    Dropzone.autoDiscover = false;
+    const myDropzone = new Dropzone('#my-dropzone', {
+        url: '#',
+        maxFiles: 5,
+        maxFilesize: 2,
+        acceptedFiles: '.jpg',
+    })
+</script>
+
+<div class="container">
+    <form class="dropzone" id="my-dropzone" action='.' method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h3>Upload Screenshot Of The Downloaded App</h3>
+        <div class="fallback">
+            <input name="file" type="file" multiple />
+        </div>
+    </form>
+    <a id="button" href='{% url "tasks_list" %}' class="btn btn-primary">Upload</a>
+</div>
+
+
+{% endblock content %}
